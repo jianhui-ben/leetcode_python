@@ -18,7 +18,7 @@
 #Output: 0
 
 
-## binary search
+## binary search: time O(log n), space O(1)
 def findMin(nums):
     mid= len(nums)//2
     out= nums[0]
