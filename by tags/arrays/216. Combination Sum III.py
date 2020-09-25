@@ -50,3 +50,22 @@ class Solution:
 ## if the i-th bit is 1, then number (i+1) is used
 ## total # of 1s should be k
 ## time complexity: O(2^m) = O(2^9)
+
+
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        result=[]
+        nums.sort() ## this one can avoid replicate of the cur_list
+        def recursion(cur_list, cur_sum,next_index):
+            if len(cur_list)==3 and cur_sum==0:
+                if cur_list not in result:
+                    result.append(list(cur_list))  ## why this list is important
+
+            if len(cur_list)<3:
+                for i in range(next_index, len(nums)):
+                    cur_list.append(nums[i])
+                    recursion(cur_list, cur_sum+nums[i], i+1)
+                    cur_list.pop()
+            
+        recursion([], 0, 0)
+        return result
