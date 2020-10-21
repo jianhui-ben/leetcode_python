@@ -24,25 +24,24 @@
 #Input: coins = [1], amount = 1
 #Output: 1
 
+def coinChange(coins, amount):    
+    #Ben's method
+    if amount==0: return 0
+    dp=[float('inf')]* (amount+1)
+    used= []
+    for i in range(1, amount+1):
+        if i in coins:
+            dp[i]=1
+            used.append(i)
+        else: 
+            for k in used:
+                dp[i]= min(dp[i],1+dp[i-k])
+
+    return dp[-1] if dp[-1]<float('inf') else -1
+
+coins= [1,2,5]
+amount=11
+coinChange(coins, amount)
 
 
-class Solution:
-    def coinChange(self, coins: List[int], amount: int) -> int:
-        
-        # Ben's method
-        # if amount==0: return 0
-        # dp=[-1]* (amount+1)
-        # used= []
-        # for i in range(1, amount+1):
-        #     if i in coins:
-        #         dp[i]=1
-        #         used.append(i)
-        #     else: 
-        #         find_min= float('inf')
-        #         for k in used:
-        #             if dp[amount-k]!=-1:
-        #                 find_min=min(find_min, 1+ dp[amount-k])
-        #         if find_min!=float('inf'):
-        #             dp[i]=find_min
-        #         else:  dp[i]=-1
-        # return dp[amount]
+min(float('inf'),1+float('inf'))
