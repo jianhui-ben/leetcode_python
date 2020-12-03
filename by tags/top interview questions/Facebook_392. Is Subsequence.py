@@ -24,4 +24,6 @@ class Solution:
             if t[i]==cur_search:
                 break
         return self.isSubsequence(s[1:], t[i+1:])
-        
+ 
+    
+
