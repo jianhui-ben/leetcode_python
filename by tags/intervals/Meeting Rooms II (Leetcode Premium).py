@@ -35,4 +35,3 @@ class Solution:
                 out[0]= i.end
             out.sort()
         return len(out)
-        
