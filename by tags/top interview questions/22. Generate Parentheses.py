@@ -27,3 +27,4 @@ class Solution:
                 
         recursion(n, n, '')
         return self.out
+
