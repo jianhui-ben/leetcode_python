@@ -57,4 +57,23 @@ class Solution:
                     
                 
                 
-                    
+# P(next head | 10 heads before) = P(next head ^ 10 heads before) / P(10 heads before)
+#= [P( next head ^ 10 heads before ^ it's a fair coin) +  P( next head ^ 10 heads before ^ it's a error coin) ] / [ P(10 heads before ^ it's a fair coin)  + P(10 heads before ^ its a error coin) ]
+#= [ P(11 heads ^ its a fair coin) +  P(11 heads ^ its a error coin) ] /  [ P(10 heads before ^ it's a fair coin)  + P(10 heads before ^ its a error coin) ]
+#= [ 0.5**11 * 999/1000 + 1.0**11 * 1/1000] + [ 0.5**10 * 999/1000 + 1.0**10 * 1/1000 ]
+#=0.753089                   
+
+
+#P(next head | 10 heads before)=
+
+# P(next head ^ 10 heads before)/ P(10 heads before)
+# (P(next head ^ 10 heads before ^ it's fair coin ) + P(next head ^ 10 heads before ^ it's unfair))
+# / (P(10 heads before ^ fair) + P(10 heads before ^ unfair))
+# = (P(11 heads ^ fair) + P(11 heads ^ unfair) )
+# / (P(10 heads ^ fair) + P(10 heads ^ unfair) )
+#= ((0.5**11* 999/1000)+ (1/1000))
+# / ((0.5**10* 999/1000)+ (1/1000))
+print(((0.5**11* 999/1000)+ (1/1000))/ ((0.5**10* 999/1000)+ (1/1000)))
+
+
+#100个post 0.04概率出广告， back to back ads个数的期望
