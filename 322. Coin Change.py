@@ -24,24 +24,47 @@
 #Input: coins = [1], amount = 1
 #Output: 1
 
-def coinChange(coins, amount):    
-    #Ben's method
-    if amount==0: return 0
-    dp=[float('inf')]* (amount+1)
-    used= []
-    for i in range(1, amount+1):
-        if i in coins:
-            dp[i]=1
-            used.append(i)
-        else: 
-            for k in used:
-                dp[i]= min(dp[i],1+dp[i-k])
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        ## naive O(# of coins * amount^# of coins)
+        if amount<0: return -1
+        if amount ==0: return 0
+        out= float('inf')
+        
+        for coin in coins:
+            subproblem = self.coinChange(coins, amount- coin)
+            if subproblem==-1: continue
+            out=min(out, subproblem+1)
+        return out if out!=float('inf') else -1
+    
 
-    return dp[-1] if dp[-1]<float('inf') else -1
-
-coins= [1,2,5]
-amount=11
-coinChange(coins, amount)
-
-
-min(float('inf'),1+float('inf'))
+    
+        ## improve it with mem top down recursion method
+        ## the num of subproblems was reduce to O(n) so total time O(# of coins * n)
+        
+        mem = dict()
+        def dp(amount):
+            if amount in mem: return mem[amount]
+            if amount<0: return -1
+            if amount ==0: return 0
+            out= float('inf')
+            for coin in coins:
+                subproblem = dp(amount- coin)
+                if subproblem==-1: continue
+                out=min(out, subproblem+1)
+            mem[amount] = out if out!=float('inf') else -1
+            return mem[amount]
+        return dp(amount)
+    
+    
+        ## improve it with bottom up iteration method:
+        ## similar to top down recursion, time O(k*n)
+        dp =  [float('inf')] * (amount+1)
+        dp[0]=0
+        for i in range(1, amount+1):
+            for coin in coins:
+                if i-coin<0: continue
+                dp[i]=min(dp[i], 1+dp[i-coin])    
+        return dp[-1] if dp[-1]!=float('inf') else -1
+        
+        
