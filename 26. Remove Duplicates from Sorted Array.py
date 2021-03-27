@@ -13,14 +13,18 @@
 
 #It doesn't matter what you leave beyond the returned length.
 
-## wierd
-
-def removeDuplicates(nums) -> int:
-    len_ = 1
-    if len(nums)==0:
-        return 0
-    for i in range(1,len(nums)):
-        if nums[i] != nums[i-1]:
-            nums[len_] = nums[i]
-            len_ +=1
-    return len_
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        ##two pointer
+        if not nums or len(nums)==1: return 1
+        left, right =0, 1
+        while right<len(nums):
+            if nums[left]==nums[right]:
+                right+=1
+            else:
+                left+=1
+                nums[left]=nums[right]
+                right+=1
+        nums=nums[:left+1]
+        return left+1
+                
