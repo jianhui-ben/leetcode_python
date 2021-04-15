@@ -16,6 +16,23 @@
 # You should not implement it, or speculate about its implementation
 # """
 
+class NestedIterator:
+    ## most efficient way to implement it
+    def __init__(self, nestedList: [NestedInteger]):
+        from collections import deque
+        self.list= deque(nestedList)
+    
+    def next(self) -> int:
+        return self.list.popleft().getInteger()
+    
+    def hasNext(self) -> bool:
+        while self.list and not self.list[0].isInteger():
+            cur_nest_list=self.list.popleft().getList()
+            for i in range(len(cur_nest_list)-1, -1, -1):
+                self.list.appendleft(cur_nest_list[i])
+        return len(self.list)>0 
+
+
 class NestedIterator(object):
 
     def __init__(self, nestedList):
