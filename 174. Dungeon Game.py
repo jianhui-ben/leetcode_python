@@ -11,9 +11,26 @@
 
 #Note that any room can contain threats or power-ups, even the first room the knight enters and the bottom-right room where the princess is imprisoned.
 
- 
 class Solution:
     def calculateMinimumHP(self, dungeon: List[List[int]]) -> int:
+        ## try bottom up iterative method
+        ## status:dp[i][j]= m: at least m lifes from (i, j) to reach to the destination
+        ## dp[i][j] = min(dp[i+1][j], dp[i][j+1])-dungeon[i][j] if it>0, else 1
+        ## backward traverse
+        dp =[[None for _ in range(len(dungeon[0])+1)] for _ in range(len(dungeon)+1)]
+        for i in range(len(dp)-1, -1, -1):
+            for j in range(len(dp[i])-1, -1, -1):
+                if i==len(dungeon) or j==len(dungeon[0]):
+                    dp[i][j] = float('inf')
+                elif i==len(dungeon)-1 and j==len(dungeon[0])-1:
+                    res = 1-dungeon[i][j]
+                    dp[i][j]= res if res>0 else 1
+                else:
+                    res = min(dp[i+1][j], dp[i][j+1])-dungeon[i][j]
+                    dp[i][j]= res if res>0 else 1
+        return dp[0][0]
+        
+        
         ## DP
         ## status: x, y
         ## choice: down or right
