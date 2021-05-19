@@ -1,8 +1,6 @@
 #659. Split Array into Consecutive Subsequences
 #Given an integer array nums that is sorted in ascending order, return true if and only if you can split it into one or more subsequences such that each subsequence consists of consecutive integers and has a length of at least 3.
 
- 
-
 #Example 1:
 
 #Input: nums = [1,2,3,3,4,5]
