@@ -33,10 +33,10 @@ class Solution:
             return root
         
         new_root = self.upsideDownBinaryTree(root.left)
-        temp = new_root
-        while temp.right:
-            temp = temp.right
-        temp.right = TreeNode(val = root.val)
-        temp.left = root.right
+        root.left.left = self.upsideDownBinaryTree(root.right)
+        root.left.right = root
+        root.left = root.right = None
+        
+        
         return new_root
         
