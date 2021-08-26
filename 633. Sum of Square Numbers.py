@@ -4,7 +4,7 @@
  
 
 #Example 1:
-123
+
 #Input: c = 5
 #Output: true
 #Explanation: 1 * 1 + 2 * 2 = 5
