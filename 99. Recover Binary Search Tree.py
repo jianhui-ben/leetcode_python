@@ -22,8 +22,7 @@ class Solution:
         fir = sec = pre = None
 
         def helper(node):
-            nonlocal
-            fir, sec, pre
+            nonlocal fir, sec, pre
             if not node: return
 
             helper(node.left)
