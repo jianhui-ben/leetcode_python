@@ -8,6 +8,10 @@ return the min number of unhappy people
 teams = [3, 3, 5, 1, 1, 2, 4]
 rooms = [6, 7, 2, 1]
 def minUnhappy(teams, rooms):
+    """
+    time: len(rooms) ** len(teams)
+
+    """
 
     out = sum(teams)
     teams.sort(reverse = True)

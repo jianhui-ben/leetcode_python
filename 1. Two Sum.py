@@ -22,5 +22,23 @@ class Solution(object):
             find=target-x
             if find in nums and i!=nums.index(find):
                 return [i, nums.index(find)]
-        return []        
+        return []
+
+"""
+[5, 3, 2, 1, 66]
+
+
+
+
+"""
+
+
+
+
+
+
+
+
+
+
 
