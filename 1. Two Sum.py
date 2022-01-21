@@ -11,6 +11,7 @@
 #because nums[0] + nums[1] = 2 + 7 = 9,
 #return [0, 1].
 class Solution(object):
+    ##tests
     def twoSum(self, nums, target):
         """
         :type nums: List[int]
