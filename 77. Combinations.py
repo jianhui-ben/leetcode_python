@@ -34,7 +34,7 @@ class Solution:
             if cur_sel.count('1')==k:
                 out.append([options[ind] for ind, val in enumerate(cur_sel) if val=="1"])
         return out
-                
+
         
         # ##recursive
         # if k>n or k<=0: return None
